@@ -12,12 +12,12 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $user = $_POST['name'];
+        $user = $_POST['username'];
         $pass = $_POST['password'];
 
         // Prepare the SQL statement
-        $stmt = $conn->prepare("SELECT * FROM users WHERE name = :name AND password = :password");
-        $stmt->bindParam(':name', $user);
+        $stmt = $conn->prepare("SELECT * FROM users WHERE name = :username AND password = :password");
+        $stmt->bindParam(':username', $user);
         $stmt->bindParam(':password', $pass); // For demonstration. Use hashed passwords for security.
         $stmt->execute();
 
